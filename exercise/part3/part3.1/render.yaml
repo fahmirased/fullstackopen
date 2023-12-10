@@ -1,0 +1,4 @@
+services:
+  - name: backend
+    env: production
+    startCommand: npm start
