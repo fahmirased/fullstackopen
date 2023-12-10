@@ -36,11 +36,7 @@ const App = () => {
   
       // Check if a person with the same name already exists
       if (existingPerson) {
-        // Update the existing contact with the new number
-        const updatedPerson = await personsService.update(existingPerson.id, {
-          ...existingPerson,
-          number: newNumber,
-        })
+        
 
         const confirmUpdate = window.confirm(
           `${newName} is already added to the phonebook. Do you want to update the number?`
@@ -50,6 +46,12 @@ const App = () => {
           // If the user cancels, do not proceed with the update
           return;
         }
+
+        // Update the existing contact with the new number
+        const updatedPerson = await personsService.update(existingPerson.id, {
+          ...existingPerson,
+          number: newNumber,
+        })
   
         setPersons((prevPersons) =>
           prevPersons.map((person) =>
